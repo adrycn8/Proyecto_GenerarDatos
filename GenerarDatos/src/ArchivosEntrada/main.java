@@ -33,10 +33,17 @@ import java.util.HashMap;//Implementación de Map de Java
 import java.util.List;//Clase para estructuras de datos para organizar elementeos de manera secuencial
 import java.util.Map;//Aplicar una función dada a cada elemento de una colección y devolver una coleccion con resultados
 
+/**
+* Clase principal que contiene el método main para ejecutar el programa. 
+* Esta clase es responsable de iniciar la aplicación y coordinar las operaciones 
+* de generación de informes a partir de los archivos de entrada.
+*/
 public class main {
-
+    
     public static void main(String[] args) {
+        //Punto de entrada del codigo del programa
         try {
+            // Código que puede lanzar una excepción
             // Crear informe de vendedores
             createSalesReport("salesman_info.txt");
 
@@ -45,8 +52,11 @@ public class main {
 
             // Crear informe de productos
             createProductInfoReport("products_info.txt");
-
+            
+            //Imprime un mensaje en la consola indicando que los archivos de reporte se han generado con éxito
             System.out.println("Archivos de reporte generados con éxito.");
+            
+            //Indica si hay algun error al generar el reporte del archivo
         } catch (IOException e) {
             System.err.println("Error al generar los archivos de reporte: " + e.getMessage());
             e.printStackTrace(); // Imprime detalles de la excepción
@@ -55,13 +65,18 @@ public class main {
 
     // Método para crear el informe de vendedores
     private static void createSalesReport(String salesmenFile) throws IOException {
+        //Cada entrada representa un vendedor y el total de sus ventas.
         Map<String, Double> salesBySalesman = new HashMap<>();
-
+        
+        //Permite leer el archivo línea por línea de manera eficiente
         try (BufferedReader reader = new BufferedReader(new FileReader(salesmenFile))) {
             String line;
+             //Este ciclo lee cada línea del archivo de texto mientras haya líneas disponibles para leer 
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");
                 String salesmanName = parts[2] + " " + parts[3];
+
+                //Esta variable se utilizará para calcular el total de ventas de un vendedor.
                 double totalSales = calculateTotalSales(parts);
                 salesBySalesman.put(salesmanName, totalSales);
             }
@@ -72,7 +87,9 @@ public class main {
         Collections.sort(sortedSales, Comparator.comparing(Map.Entry::getValue, Comparator.reverseOrder()));
 
         // Escribir el informe de vendedores en el archivo
+        //Facilita la escritura eficiente de grandes cantidades de datos 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("sales_report.csv"))) {
+            //Cada entrada representa un vendedor y el total de sus ventas. 
             for (Map.Entry<String, Double> entry : sortedSales) {
                 writer.write(entry.getKey() + ";" + entry.getValue());
                 writer.newLine();
@@ -82,23 +99,29 @@ public class main {
 
     // Método para calcular el total de ventas de un vendedor
     private static double calculateTotalSales(String[] salesInfo) {
-        double totalSales = 0;
-        for (int i = 4; i < salesInfo.length; i += 2) {
+        double totalSales = 0; //Calcula ventas totales de un vendedor
+        for (int i = 4; i < salesInfo.length; i += 2) { //Representa el ID del producto y la cantidad vendida.
             totalSales += Integer.parseInt(salesInfo[i]) * Integer.parseInt(salesInfo[i + 1]);
         }
-        return totalSales;
+        return totalSales;//Contiene la suma acumulada de todas las ventas realizadas
     }
 
     // Método para crear el informe de productos vendidos
     private static void createProductReport(String salesFile) throws IOException {
+        //Este mapa se utiliza para generar informes sobre los productos vendidos.
         Map<String, Integer> productsSold = new HashMap<>();
-
+        
+        //Permite leer el archivo línea por línea de manera eficiente.
         try (BufferedReader reader = new BufferedReader(new FileReader(salesFile))) {
             String line;
+             //Comprueba si no es nula para continuar con la lectura
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");
+                
+                 //Cada iteración aumenta i en 2 para avanzar al siguiente par de elementos
                 for (int i = 4; i < parts.length; i += 2) {
                     String productId = parts[i];
+                    //Convierte y almacena la cantidad de la variable
                     int quantitySold = Integer.parseInt(parts[i + 1]);
                     productsSold.put(productId, productsSold.getOrDefault(productId, 0) + quantitySold);
                 }
