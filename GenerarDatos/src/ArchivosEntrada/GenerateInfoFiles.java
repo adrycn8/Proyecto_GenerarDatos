@@ -35,7 +35,11 @@ package ArchivosEntrada;
 	        // Lógica para generar los archivos de información pseudoaleatoria
 	        try {        	           
 	            // Llamar a los métodos para generar los archivos requeridos
-	            createSalesMenFile(1); // Ejemplo: Generar información para las ventas de 1 vendedor
+	            createSalesMenFile(1); //Genera salesmen_info.txt información ventas de vendedor CC 50906010 
+	            createSalesMenFile1(1);//Genera salesmen_info1.txt información ventas de vendedor CC 90320001 
+	            createSalesMenFile2(1);//Genera salesmen_info2.txt información ventas de vendedor CE 200120
+	            createSalesMenFile3(1);//Genera salesmen_info3.txt información ventas de vendedor TI 1054000568
+	            createSalesMenFile4(1);//Genera salesmen_info3.txt información ventas de vendedor PT 14151617 
 	            createProductsFile(1); // Ejemplo: Generar información para 1 producto
 	            createSalesManInfoFile(1); // Ejemplo: Generar información para 1 vendedor
 	            System.out.println("Archivos de entrada txt generados con éxito.");
@@ -47,7 +51,7 @@ package ArchivosEntrada;
 	        }
 	    }
 
-	    // Método para generar un archivo de ventas de un vendedor con información pseudoaleatoria
+	    //Método para generararchivo de ventas vendedor CC 50906010 con información pseudoaleatoria
 	    private static void createSalesMenFile(int randomSalesCount) throws IOException {
 	        try (BufferedWriter writer = new BufferedWriter(new FileWriter("salesmen_info.txt"))) {
 	            for (int i = 0; i < randomSalesCount; i++) {
@@ -58,6 +62,55 @@ package ArchivosEntrada;
 	            }
 	        }
 	    }
+	    
+	    //Método para generararchivo de ventas vendedor CC 90320001 con información pseudoaleatoria
+	    private static void createSalesMenFile1(int randomSalesCount) throws IOException {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter("salesmen_info1.txt"))) {
+	            for (int i = 0; i < randomSalesCount; i++) {
+	               
+	                String salesInfo = generateSalesInfo1(); // Método para generar información de ventas
+	                writer.write(salesInfo); // Escribir información de ventas en el archivo
+	                writer.newLine(); // Ir a la siguiente línea en el archivo
+	            }
+	        }
+	    }
+	    
+	  //Método para generararchivo de ventas vendedor CE 200120 con información pseudoaleatoria
+	    private static void createSalesMenFile2(int randomSalesCount) throws IOException {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter("salesmen_info2.txt"))) {
+	            for (int i = 0; i < randomSalesCount; i++) {
+	               
+	                String salesInfo = generateSalesInfo2(); // Método para generar información de ventas
+	                writer.write(salesInfo); // Escribir información de ventas en el archivo
+	                writer.newLine(); // Ir a la siguiente línea en el archivo
+	            }
+	        }
+	    }
+	    
+	  //Método para generararchivo de ventas vendedor TI 1054000568 con información pseudoaleatoria
+	    private static void createSalesMenFile3(int randomSalesCount) throws IOException {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter("salesmen_info3.txt"))) {
+	            for (int i = 0; i < randomSalesCount; i++) {
+	               
+	                String salesInfo = generateSalesInfo3(); // Método para generar información de ventas
+	                writer.write(salesInfo); // Escribir información de ventas en el archivo
+	                writer.newLine(); // Ir a la siguiente línea en el archivo
+	            }
+	        }
+	    }
+	    
+	  //Método para generararchivo de ventas vendedor PT 14151617 con información pseudoaleatoria
+	    private static void createSalesMenFile4(int randomSalesCount) throws IOException {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter("salesmen_info4.txt"))) {
+	            for (int i = 0; i < randomSalesCount; i++) {
+	               
+	                String salesInfo = generateSalesInfo4(); // Método para generar información de ventas
+	                writer.write(salesInfo); // Escribir información de ventas en el archivo
+	                writer.newLine(); // Ir a la siguiente línea en el archivo
+	            }
+	        }
+	    }
+
 
 	    // Método para generar un archivo con información pseudoaleatoria de productos
 	    private static void createProductsFile(int productsCount) throws IOException {
@@ -86,7 +139,25 @@ package ArchivosEntrada;
 	    // Método para generar información pseudoaleatoria de ventas
 	    private static String generateSalesInfo() {
 	    	
-	    	// Devuelve una cadena de texto de las ventas Con la estructura
+	    	// Devuelve una cadena de texto de las ventas vendedor CC 50906010 Con la estructura
+	    	//Línea 1 TipoDocumentoVendedor;NúmeroDocumentoVendedor
+	    	//Linea 2 en adelante IDProducto;CantidadProductoVendido
+	        return	"CC;50906010\n"+ 
+	        		"10;5\n" +
+	                "11;12\n" +
+	                "12;8\n" +
+	                "13;25\n" + 
+	                "14;15\n" + 
+	                "15;30\n" + 
+	                "16;24\n" + 
+	                "17;2\n" + 
+	                "18;7\n" +
+	                "19;45";        
+	    }
+	    
+	    private static String generateSalesInfo1() {
+	    	
+	    	// Devuelve una cadena de texto de las ventas vendedor CC 90320001 Con la estructura
 	    	//Línea 1 TipoDocumentoVendedor;NúmeroDocumentoVendedor
 	    	//Linea 2 en adelante IDProducto;CantidadProductoVendido
 	        return	"CC;90320001\n"+ 
@@ -101,7 +172,50 @@ package ArchivosEntrada;
 	                "18;27\n" +
 	                "19;23";        
 	    }
-
+	    
+	    private static String generateSalesInfo2() {
+	    	
+	    	// Devuelve una cadena de texto de las ventas vendedor CE 200120 Con la estructura
+	    	//Línea 1 TipoDocumentoVendedor;NúmeroDocumentoVendedor
+	    	//Linea 2 en adelante IDProducto;CantidadProductoVendido
+	        return	"CE;200120\n"+ 
+	        		"12;8\n" +
+	                "13;25\n" + 
+	                "14;15\n" + 
+	                "18;7\n" +
+	                "19;45";        
+	    }
+	    
+	    private static String generateSalesInfo3() {
+	    	
+	    	// Devuelve una cadena de texto de las ventas vendedor TI 1054000568 Con la estructura
+	    	//Línea 1 TipoDocumentoVendedor;NúmeroDocumentoVendedor
+	    	//Linea 2 en adelante IDProducto;CantidadProductoVendido
+	        return	"TI;1054000568\n"+ 
+	        		"14;15\n" + 
+	        		"15;55\n" + 
+	                "16;24\n" +
+	                "19;100";        
+	    }
+	    
+	    private static String generateSalesInfo4() {
+	    	
+	    	// Devuelve una cadena de texto de las ventas vendedor PT 14151617 Con la estructura
+	    	//Línea 1 TipoDocumentoVendedor;NúmeroDocumentoVendedor
+	    	//Linea 2 en adelante IDProducto;CantidadProductoVendido
+	        return	"PT;14151617\n"+ 
+	        		"10;90\n" +
+	                "11;122\n" +
+	                "12;88\n" +
+	                "13;74\n" + 
+	                "14;150\n" + 
+	                "15;300\n" + 
+	                "16;240\n" + 
+	                "17;25\n" + 
+	                "18;89\n" +
+	                "19;450";        
+	    }
+	    
 	    // Método para generar información pseudoaleatoria de productos
 	    private static String generateProductInfo() {
 	    	
@@ -130,7 +244,7 @@ package ArchivosEntrada;
 	        		"CE;200120;DUVAN;QUINTERO\n" + 
 	        		"CC;30204051;LILIANA;BAHAMON\n" + 
 	        		"PT;14151617;OSCAR;VILLEGAS\n" + 
-	        		"CC;6770743;JULIANA;MORENO\n" + 
+	        		"CC;50906010;JULIANA;MORENO\n" + 
 	        		"CC;90320002;CESAR;MOLINA\n" +
 	        		"TI;1054000568;NATALIA;RIOS\n" +
 	        		"CC;30204050;CLAUDIA;BOTERO";	        
