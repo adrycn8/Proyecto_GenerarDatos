@@ -24,8 +24,8 @@ package ArchivosEntrada;
 
 	/**
 	 * Esta @class GenerateInfoFiles es donde vamos a generar la información de los
-	 * 3 archivos de entrada para ejecutar los reportes en la clase main
-	 *  Productos.txt, Vendedores.txt y Ventas.txt
+	 *  archivos de entrada txt con datos de Productos, Vendedores y Ventas
+  	 *  para ejecutar los reportes en la clase main
 	 */
 	public class GenerateInfoFiles { // Aquí se pueden definir variables miembro, métodos y constructores
 
