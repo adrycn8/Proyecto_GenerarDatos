@@ -1,0 +1,13 @@
+TipoDeDocumento;NúmeroDeDocumentoVendedor
+TI;105400056
+IDProducto;NúmeroDeVentas
+10;5
+11;9
+12;5
+13;20
+14;31
+15;9
+16;3
+17;13
+18;25
+19;27

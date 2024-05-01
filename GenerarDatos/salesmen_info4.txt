@@ -1,0 +1,13 @@
+TipoDeDocumento;NúmeroDeDocumentoVendedor
+CE;200120
+IDProducto;NúmeroDeVentas
+10;5
+11;15
+12;11
+13;40
+14;36
+15;14
+16;19
+17;14
+18;32
+19;56
